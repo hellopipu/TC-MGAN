@@ -1,11 +1,11 @@
 # TC-MGAN
-Pytorch implementation for multi-modality GAN with tumor-consistency loss for brain MR image synthesis
+### Pytorch implementation for multi-modality GAN with tumor-consistency loss for brain MR image synthesis
 
 <p align='center'>
 <img src='https://github.com/hellopipu/TC-MGAN/blob/master/doc/1.png' width='900'/>
 </p>
 
-Magnetic Resonance (MR) images of different modalities can provide complementary information for clinical diagno- sis, but whole modalities are often costly to access. Most existing methods only focus on synthesizing missing images between two modalities, which limits their robustness and efficiency when multiple modalities are missing. To address this problem, we propose a multi-modality generative adver- sarial network (MGAN) to synthesize three high-quality MR modalities (FLAIR, T1 and T1ce) from one MR modality T2 simultaneously. The experimental results show that the quality of the synthesized images by our proposed methods is better than the one synthesized by the baseline model, pix2pix. Besides, for MR brain image synthesis, it is impor- tant to preserve the critical tumor information in the generated modalities, so we further introduce a multi-modality tumor consistency loss to MGAN, called TC-MGAN. We use the synthesized modalities by TC-MGAN to boost the tumor segmentation accuracy, and the results demonstrate its effec- tiveness.
+Magnetic Resonance (MR) images of different modalities can provide complementary information for clinical diagnosis, but whole modalities are often costly to access. Most existing methods only focus on synthesizing missing images between two modalities, which limits their robustness and efficiency when multiple modalities are missing. To address this problem, we propose a multi-modality generative adversarial network (MGAN) to synthesize three high-quality MR modalities (FLAIR, T1 and T1ce) from one MR modality T2 simultaneously. The experimental results show that the quality of the synthesized images by our proposed methods is better than the one synthesized by the baseline model, pix2pix. Besides, for MR brain image synthesis, it is important to preserve the critical tumor information in the generated modalities, so we further introduce a multi-modality tumor consistency loss to MGAN, called TC-MGAN. We use the synthesized modalities by TC-MGAN to boost the tumor segmentation accuracy, and the results demonstrate its effectiveness.
 
 ## Dependencies
 
@@ -18,10 +18,12 @@ Download 285 cases training dataset of [BRATS18](https://www.med.upenn.edu/sbia/
 Then move all the 285 cases to ```./brats18_dataset/train/```
 
 run the folowing command to pre-process, split and save the data as ```.npy``` files.
-    ```bash
-    python generate_data.py
-    ```
+```bash
+python generate_data.py
+```
+    
 The saved files are as below.
+
 ```
 ├── brats18_dataset
 │   ├── npy_gan
@@ -40,21 +42,28 @@ The saved files are as below.
 │   │   └── train_f2.npy
 │   │   └── train_t1.npy
 ```
+
 ## Train network
 - Firstly, train a conditional unet which will be used for GAN training later.
+
     ```bash
     python train_unet_4.py
     ```
+    
 - Then, train the GAN model
+
     ```bash
     python train_gan.py
     ```
+    
 ## Test network
-    ```bash
-    python test_gan.py
-    ```
+
+```bash
+python test_gan.py
+```
     
 the generated images will be saved as below.
+
    ```
 ├── brats18_dataset
 │   ├── npy_pred
@@ -63,11 +72,14 @@ the generated images will be saved as below.
 │   │   └── pred_t1.npy
 
 ```
+
 ## Demo
 You can download pretrained model here [[BaiduNet]](https://pan.baidu.com/s/1eg-bUKawINmy2B63pV_zCg)(code:wgne), and run the command below to try the demo.
-    ```bash
-    python demo.py
-    ```
+
+```bash
+python demo.py
+```
+    
 <p align='center'>
 <img src='https://github.com/hellopipu/TC-MGAN/blob/master/doc/2.png' width='900'/>
 </p>
