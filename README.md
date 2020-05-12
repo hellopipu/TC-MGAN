@@ -47,7 +47,7 @@ The saved files are as below.
 - Firstly, train a conditional unet which will be used for GAN training later.
 
     ```bash
-    python train_unet_4.py
+    python train_pre_unet.py
     ```
     
 - Then, train the GAN model
