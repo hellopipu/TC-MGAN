@@ -74,7 +74,7 @@ the generated images will be saved as below.
 ```
 
 ## Demo
-You can download pretrained model here [[BaiduNet]](https://pan.baidu.com/s/1eg-bUKawINmy2B63pV_zCg)(code:wgne), and run the command below to try the demo.
+You can download pretrained model here [[BaiduNet]](https://pan.baidu.com/s/15N1ESG12PHooHKlEQu31AA)(code:qnw3), and run the command below to try the demo.
 
 ```bash
 python demo.py
